@@ -7,3 +7,15 @@ services:
       context: .
       dockerfile: Dockerfile.production
     command: make test
+
+  caddy:
+    image: caddy
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - services/caddy::/etc/caddy
