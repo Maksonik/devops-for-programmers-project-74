@@ -7,6 +7,12 @@ COPY app/package-lock.json package-lock.json
 
 RUN npm install
 
+RUN npm ci
+
 COPY app/. .
 
-CMD ["make", "test"]
+EXPOSE 8080
+ENV NODE_ENV=production
+RUN make build
+
+CMD make start

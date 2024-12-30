@@ -5,3 +5,5 @@ services:
     ports:
       - "8080:8080"
     command: make dev
+    volumes:
+      - ./app:/app
